@@ -1,13 +1,23 @@
 def countsquares(x,y):
+    """
+    returns the number of possible squares formed by given points on a Cartesian plane
+
+    Args:
+    x (arr): the x-coordinates of all given points
+    y (arr): the y-coordinates of all given points 
+
+    Returns:
+    int
+    """
     count=0
-    ptlist=[[x[i],y[i]] for i in range(0,len(x))]  #list of points using coordinates
+    ptlist=list(zip(x,y))  #list of points using coordinates
     def dist(a,b): #input 2 points here
         """
         returns distance between point a and point b
 
         Args:
-        a (int)
-        b (int)
+        a (int): refers to point with index a given by ptlist
+        b (int): refers to point with index b given by ptlist
 
         Returns:
         int
@@ -34,7 +44,7 @@ def countsquares(x,y):
         returns whether 2 lines are perpendicular
 
         Args:
-        a,b (1-by-2 array): the lines a,b numbered according to linelist
+        a,b (1-by-2 array): the lines a,b, each described by 2 points [.,.]
 
         Returns:
         Boolean
@@ -51,7 +61,6 @@ def countsquares(x,y):
             for j in possible:
                 squarepts=list(set(linelist[j[0]]+linelist[j[1]]+linelist[j[2]]+linelist[j[3]]))
                 if len(squarepts)==4:
-                    print(squarepts)
                     if perpendicular(linelist[j[0]],linelist[j[1]]) or perpendicular(linelist[j[0]],linelist[j[2]]):
                         count+=1 
     return(count)
